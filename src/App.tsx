@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const WeatherTypes:any = [
+const WeatherTypes:{type:string, img:string}[] = [
     {
       type: "Clear",
       img: "https://cdn-icons-png.flaticon.com/512/6974/6974833.png",
@@ -40,8 +40,8 @@ function App() {
     const inputref:any =useRef(null)
     const [apiData, setApiData]:any = useState(null);
     const [showWeather, setShowWeather]:any= useState(null)
-    const [loading, setLoading]: any = useState(false)
-    const fetchWeather:any = async()=> {
+    const [loading, setLoading]  = useState<boolean>(false)
+    const fetchWeather:any= async()=> {
         const URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputref.current.value}&appid=${api_key}&units=metric`;
         setLoading(true)
         fetch(URL)
